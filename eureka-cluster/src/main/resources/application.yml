@@ -1,0 +1,47 @@
+#spring:
+#  profiles:
+#    active: peer2
+#java -jar eureka-cluster-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer1
+#java -jar eureka-cluster-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer2
+#java -jar eureka-cluster-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer3
+eureka.client.register-with-eureka: false
+eureka.client.fetch-registry: false
+---
+spring:
+  application:
+    name: eureka-cluster
+  profiles: peer1
+server:
+  port: 8000
+eureka:
+  instance:
+    hostname: peer1
+  client:
+      serviceUrl:
+        defaultZone: http://peer2:8001/eureka/,http://peer3:8002/eureka/
+---
+spring:
+  application:
+    name: eureka-cluster
+  profiles: peer2
+server:
+  port: 8001
+eureka:
+  instance:
+    hostname: peer2
+  client:
+      serviceUrl:
+        defaultZone: http://peer1:8000/eureka/,http://peer3:8002/eureka/
+---
+spring:
+  application:
+    name: eureka-cluster
+  profiles: peer3
+server:
+  port: 8002
+eureka:
+  instance:
+    hostname: peer3
+  client:
+      serviceUrl:
+        defaultZone: http://peer1:8000/eureka/,http://peer2:8001/eureka/
