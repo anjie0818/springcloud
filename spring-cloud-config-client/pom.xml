@@ -4,15 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>eureka</artifactId>
+	<artifactId>spring-cloud-config-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>eureka</name>
-	<description>服务注册中心</description>
-	<!--spring-boot-starter-parent这是一个依赖管理器的pom文件。它的作用就是管理boot需要的所有依赖，
-	从而统一各种jar的版本号，避免了版本不一致而出现的问题。所以，引入其他的依赖就可以省略版本号。当
-	然也可以加上指定的版本号，从而取代默认的。-->
+	<name>spring-cloud-config-client</name>
+	<description>配置文件客户端</description>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -28,21 +26,28 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
-		<groupId>org.springframework.cloud</groupId>
-		<artifactId>spring-cloud-starter-eureka-server</artifactId>
-	</dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--添加刷新获取服务端配置-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
-			<!--spring-cloud-dependencies也是一个依赖管理器的pom文件，与spring-boot-starter-parent的作用一样，
-			不同的是spring-cloud-dependencies是对cloud的依赖管理。如：spring-cloud-starter-config、
-			spring-cloud-starter-netflix-eureka-server-->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -60,4 +65,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
 </project>
