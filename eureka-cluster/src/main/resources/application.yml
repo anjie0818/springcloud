@@ -4,8 +4,8 @@
 #java -jar eureka-cluster-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer1
 #java -jar eureka-cluster-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer2
 #java -jar eureka-cluster-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer3
-eureka.client.register-with-eureka: false
-eureka.client.fetch-registry: false
+eureka.client.register-with-eureka: true
+eureka.client.fetch-registry: true
 ---
 spring:
   application:

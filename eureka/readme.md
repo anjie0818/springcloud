@@ -72,7 +72,6 @@ eureka.client.serviceUrl.defaultZone=http://localhost:${server.port}/eureka/
 ##### 启动工程后，访问：http://localhost:8000/，可以看到下面的页面，其中还没有发现任何服务
 ![](image/2.png)
 
-
     
 
 
